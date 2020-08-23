@@ -30,7 +30,7 @@
 
             <div style="width: 145px" class="form-group">
                 <label class="control-label">#{messages.msg_CPF}</label>
-                <input type="text" class="form-control" onkeyup="mascaraCPFCompleto(this);" onblur="mascaraCPFCompleto(this);" jsf:value="#{pessoaBean.pessoa.cpf}" jsf:maxlength="14" jsf:converter="converter.CpfConverter"
+                <input type="text" class="form-control" onkeyup="MascaraGenerica(this, 'CPF');" onblur="MascaraGenerica(this, 'CPF');" jsf:value="#{pessoaBean.pessoa.cpf}" jsf:maxlength="14" jsf:converter="converter.CpfConverter"
                        jsf:required="true" jsf:label="#{messages.msg_CPF}" jsf:validator="valitor.CpfValidator" />
             </div>
 

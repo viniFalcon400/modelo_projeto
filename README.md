@@ -1,8 +1,8 @@
 --PROJETO MAVEN
 --configuração
-O projeto acesso o banco de dados mysql.
+O projeto acessa o banco de dados mysql.
 Porta: 3306
-Schema: modelo
+
 --
 Observação: No projeto tem a lib do banco de dados "postgresql"
 Caso queria usar o "postgresql" deve alterar a conexão do projeto nesse arquivo: modelo-projeto\src\main\resources\META-INF\persistence.xml

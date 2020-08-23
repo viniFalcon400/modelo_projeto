@@ -25,7 +25,7 @@
 
             <div style="width: 145px" class="form-group">
                 <label class="control-label">#{messages.msg_CEP}</label> 
-                <input type="text" jsf:maxlength="9" class="form-control" jsf:value="#{enderecoBean.endereco.cep}" jsf:required="true" jsf:label="#{messages.msg_CEP}" jsf:converter="converter.CepConverter" />
+                <input type="text" jsf:maxlength="9" class="form-control" onkeyup="MascaraGenerica(this, 'CEP');" onblur="MascaraGenerica(this, 'CEP');" jsf:value="#{enderecoBean.endereco.cep}" jsf:required="true" jsf:label="#{messages.msg_CEP}" jsf:converter="converter.CepConverter" />
             </div>
 
             <div style="width: 450px" class="form-group">
@@ -53,7 +53,7 @@
 
             <div style="width: 145px" class="form-group">
                 <label class="control-label">#{messages.msg_Numero}</label> 
-                <input type="text" jsf:maxlength="10"  jsf:label="#{messages.msg_Numero}" class="form-control" jsf:value="#{enderecoBean.endereco.numero}" />
+                <input type="text" jsf:maxlength="10" onkeyup="MascaraGenerica(this, 'INTEIRO');" onblur="MascaraGenerica(this, 'INTEIRO');" jsf:label="#{messages.msg_Numero}" class="form-control" jsf:value="#{enderecoBean.endereco.numero}" />
             </div>
 
             <div class="form-group">
