@@ -9,16 +9,16 @@ e refazer o build.
 --
 
 --iniciar projeto
-1* Entrar na pasta raiz do projeto
-2* Comando
+1- Entrar na pasta raiz do projeto
+2- Comando:
 java -jar target/dependency/webapp-runner.jar --port 5000 target/*.war
-3* Acesso o browser url: http://localhost:5000/
-4* Acesso
+3- Acesso o browser url: http://localhost:5000/
+4- Acesso:
 Usiario: admim
 Senha: admin
 
 --rest
-1* retorno no formato HTML
+1- retorno no formato HTML
 http://localhost:5000/rest/projeto
 
 
