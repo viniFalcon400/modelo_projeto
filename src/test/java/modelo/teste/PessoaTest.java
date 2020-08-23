@@ -33,10 +33,9 @@ public class PessoaTest {
 
 	@Test
 	public void test_modelo() throws Exception {
-		System.out.println("AA::");
 		Pessoa input = mock(Pessoa.class);
 		input = this.dao.insert(input);
-		System.out.println("BB::"+ input);
+		System.out.println("Pessoa:"+ input);
 		Pessoa p = mockPessoa(1l);
 		when(this.dao.buscar(1l)).thenReturn(p);
 		

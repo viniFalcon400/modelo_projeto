@@ -34,7 +34,6 @@ public class AutenticacaoFilter implements Filter {
 		HttpSession httpSession = ((HttpServletRequest) request).getSession();
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-		System.out.println("&&&&&&&&&&&&&&&:" + httpServletRequest.getRequestURI());
 		if (!httpServletRequest.getRequestURI().contains("login.xhtml") && !httpServletRequest.getRequestURI().contains("/rest") && !httpServletRequest.getRequestURI().contains("/imagens")) {
 			Usuario usuarioModel = (Usuario) httpSession.getAttribute("usuarioAutenticado");
 			if (usuarioModel == null ) {
