@@ -70,4 +70,10 @@ public class Usuario implements Serializable {
 	public void setUltimoAcesso(Date ultimoAcesso) {
 		this.ultimoAcesso = ultimoAcesso;
 	}
+
+	@Override
+	public String toString() {
+		return "Usuario{" + "id=" + id + ", nomeUsuario=" + nomeUsuario + ", ultimoAcesso=" + ultimoAcesso + '}';
+	}
+	
 }

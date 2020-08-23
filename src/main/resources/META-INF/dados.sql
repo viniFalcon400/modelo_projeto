@@ -1,1 +1,1 @@
-insert into modelo.usuario (id, nome, senha, dt_ultimo_acesso) values (-1, 'admin', 'admin', null);
+insert into dbkvtarhriblik.usuario (id, nome, senha, dt_ultimo_acesso) values (-1, 'admin', 'admin', null);

@@ -60,7 +60,9 @@ public class UsuarioBean implements Serializable {
 	}
 
 	public String loginProject() {
+		System.out.println("ACESSO-----");
 		Usuario usuarioLogin = usuarioTransaction.buscaUsuario(uname, password);
+		System.out.println("SAIDACESSO-----"+usuarioLogin);
 		if (usuarioLogin != null) {
 			HttpSession session = Uteis.getSession();
 			session.setAttribute("username", uname);
