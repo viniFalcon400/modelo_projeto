@@ -1,1 +1,1 @@
-insert into dbkvtarhriblik.usuario (id, nome, senha, dt_ultimo_acesso) values (-1, 'admin', 'admin', null);
+insert into usuario (id, nome, senha, dt_ultimo_acesso) values (-1, 'admin', 'admin', null);
