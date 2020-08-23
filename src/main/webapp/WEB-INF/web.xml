@@ -27,7 +27,7 @@
         <listener-class>com.modelo.projeto.filters.HttpSessionChecker</listener-class>
     </listener>
 
-<!--    <filter>
+    <filter>
         <filter-name>logSpecial</filter-name>
         <filter-class>com.modelo.projeto.filters.AutenticacaoFilter</filter-class>
         <init-param>
@@ -44,7 +44,7 @@
     <filter-mapping>
         <filter-name>logSpecial</filter-name>
         <servlet-name>comingsoon</servlet-name>
-    </filter-mapping>-->
+    </filter-mapping>
     
     <welcome-file-list>
         <welcome-file>login.xhtml</welcome-file>

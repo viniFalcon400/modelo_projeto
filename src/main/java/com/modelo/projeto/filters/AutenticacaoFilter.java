@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author vcoelho
  */
-//@WebFilter("*")
+@WebFilter("*")
 public class AutenticacaoFilter implements Filter {
 
 	public AutenticacaoFilter() {
