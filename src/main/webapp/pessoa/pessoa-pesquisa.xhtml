@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                template="/WEB-INF/template/layout.xhtml">
+
+    <f:metadata>
+        <f:viewAction action="#{pessoaPesquisaBean.iniciar}" />
+    </f:metadata>
+
+    <ui:define name="head">	
+        #{messages.msg_Pesquisa_Pessoas}
+    </ui:define>
+
+    <ui:define name="body">
+        <h:form class="form-horizontal">
+            <div class="form-group">
+                <h:messages infoClass="alert alert-info"
+                            fatalClass="alert alert-danger"
+                            warnClass="alert alert-warning"
+                            errorClass="alert alert-danger"
+                            style="list-style:none; margin:0; padding:0" />
+            </div>
+
+            <div class="form-group">				
+                <div class="col-sm-offset-6 col-sm-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control"
+                               placeholder="#{messages.msg_Faca_Pesquisa_Nome}" 
+                               jsf:value="#{pessoaPesquisaBean.termoPesquisa}" jsf:required="true" 
+                               jsf:label="#{messages.msg_Campo_Pesquisa}"/>
+                        <span class="input-group-btn">							
+                            <button class="btn btn-default" type="submit"
+                                    jsf:actionListener="#{pessoaPesquisaBean.pesquisar}">
+                                <span class="fa fa-search"></span> 
+                                Pesquisar
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+
+        <h:dataTable styleClass="table table-bordered" var="pessoa"
+                     value="#{pessoaPesquisaBean.listaPessoas}">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{messages.msg_acao}" />
+                </f:facet>
+
+                <h:link outcome="/pessoa/pessoa-index.xhtml" styleClass="btn btn-default">
+                    <f:param name="id" value="#{pessoa.id}" />
+                    <span class="fa fa-edit"></span>
+                </h:link>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{messages.msg_nome}" />
+                </f:facet>
+                <h:outputText value="#{pessoa.nome}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{messages.msg_CPF}" />
+                </f:facet>
+                <h:outputText value="#{pessoa.cpf}">
+                    <f:converter converterId="converter.CpfConverter" />
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{messages.msg_Sexo}" />
+                </f:facet>
+                <h:outputText value="#{pessoa.sexo.tipo}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{messages.msg_Data_Nascimento}" />
+                </f:facet>
+                <h:outputText value="#{pessoa.dataNascimento}" >
+                    <f:converter converterId="converter.DateConverter" />
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{messages.msg_Naturalidade}" />
+                </f:facet>
+                <h:outputText value="#{pessoa.naturalidade}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{messages.msg_Nacionalidade}" />
+                </f:facet>
+                <h:outputText value="#{pessoa.nacionalidade}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{messages.msg_Email}" />
+                </f:facet>
+                <h:outputText value="#{pessoa.email}" />
+            </h:column>
+             <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{messages.msg_endereco}" />
+                </f:facet>
+                 <h:outputText value="#{pessoa.endereco}" />
+            </h:column>
+        </h:dataTable>
+    </ui:define>
+</ui:composition>

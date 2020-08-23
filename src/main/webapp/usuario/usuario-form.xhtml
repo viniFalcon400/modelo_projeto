@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                template="/WEB-INF/template/layout.xhtml">
+
+    <f:metadata>
+        <f:viewParam name="id" value="#{usuarioBean.usuario.id}"  />
+        <f:viewAction action="#{usuarioBean.buscar}" if="#{param.id ne null}" />
+    </f:metadata>
+
+    <ui:define name="head">	
+        #{usuarioBean.usuario.id eq null ? 'Novo' : 'Editar'} Usuario
+    </ui:define>
+
+    <ui:define name="body">
+        <h:form>
+            <div style="width: 450px" class="form-group">
+                <h:messages infoClass="alert alert-info" fatalClass="alert alert-danger" errorClass="alert alert-danger" style="list-style:none; margin:0; padding:0" />
+            </div>
+
+            <input type="hidden" name="usuario.id" value="${usuarioBean.usuario.id}" />
+
+            <div style="width: 450px" class="form-group">
+                <label class="control-label">#{messages.msg_nome}</label> 
+                <input type="text" jsf:maxlength="150" class="form-control" jsf:value="#{usuarioBean.usuario.nomeUsuario}" jsf:required="true" jsf:label="#{messages.msg_nome}" />
+            </div>
+
+            <div style="width: 145px" class="form-group">
+                <label class="control-label">Senha</label>
+                <h:inputSecret id="username" required="true" label="Senha" value="#{usuarioBean.uname}"></h:inputSecret>
+            </div>
+
+            <div class="form-group">
+                <button jsf:actionListener="#{usuarioBean.salvar}"  class="btn btn-primary" type="submit">
+                    <span class="fa fa-save"></span> #{messages.msg_Salvar}
+                </button>
+
+                <button jsf:action="#{usuarioBean.remover}" class="btn btn-danger" type="submit" style="margin-left: 10px" jsf:rendered="#{usuarioBean.usuario.id ne null}">
+                    <span class="fa fa-save"></span> #{messages.msg_Remover}
+                </button>
+
+                <h:link styleClass="btn btn-default" outcome="/usuario/usuario-pesquisa.xhtml" style="margin-left: 10px">
+                    <span class="fa fa-arrow-left"></span>					
+                    #{messages.msg_Voltar}
+                </h:link>
+            </div>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

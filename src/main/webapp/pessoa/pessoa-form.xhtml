@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                template="/WEB-INF/template/layout.xhtml">
+
+    <f:metadata>
+        <f:viewParam name="id" value="#{pessoaBean.pessoa.id}"  />
+        <f:viewAction action="#{pessoaBean.buscar}" if="#{param.id ne null}" />
+    </f:metadata>
+
+    <ui:define name="head">	
+        #{pessoaBean.pessoa.id eq null ? 'Novo' : 'Editar'} Pessoa
+    </ui:define>
+
+    <ui:define name="body">
+        <h:form>
+            <div style="width: 450px" class="form-group">
+                <h:messages infoClass="alert alert-info" fatalClass="alert alert-danger" errorClass="alert alert-danger" style="list-style:none; margin:0; padding:0" />
+            </div>
+
+            <input type="hidden" name="pessoa.id" value="${pessoaBean.pessoa.id}" />
+
+            <div style="width: 450px" class="form-group">
+                <label class="control-label">#{messages.msg_nome}</label> 
+                <input type="text" jsf:maxlength="150" class="form-control" jsf:value="#{pessoaBean.pessoa.nome}" jsf:required="true" jsf:label="#{messages.msg_nome}" />
+            </div>
+
+            <div style="width: 145px" class="form-group">
+                <label class="control-label">#{messages.msg_CPF}</label>
+                <input type="text" class="form-control" onkeyup="mascaraCPFCompleto(this);" onblur="mascaraCPFCompleto(this);" jsf:value="#{pessoaBean.pessoa.cpf}" jsf:maxlength="14" jsf:converter="converter.CpfConverter"
+                       jsf:required="true" jsf:label="#{messages.msg_CPF}" jsf:validator="valitor.CpfValidator" />
+            </div>
+
+            <div style="width: 150px" class="form-group">
+                <label class="control-label">#{messages.msg_Sexo}</label>
+                <h:selectOneMenu class="form-control" id="gender" value="#{pessoaBean.pessoa.sexo}">
+                    <f:selectItems class="form-control" value="#{pessoaBean.sexoArray}" var="g" itemValue="#{g}" itemLabel="#{g.tipo}"/>
+                </h:selectOneMenu>
+            </div>
+
+            <div style="width: 150px" class="form-group">
+                <label class="control-label">#{messages.msg_Data_Nascimento}</label>
+                <input type="date" jsf:maxlength="10" jsf:converter="converter.DateConverter" jsf:label="#{messages.msg_Data_Nascimento}" class="form-control" jsf:value="#{pessoaBean.pessoa.dataNascimento}" />
+            </div>
+
+            <div style="width: 450px" class="form-group">
+                <label class="control-label">#{messages.msg_Naturalidade}</label> 
+                <input type="text" jsf:maxlength="100" jsf:label="#{messages.msg_Naturalidade}" class="form-control" jsf:value="#{pessoaBean.pessoa.naturalidade}" />
+            </div>
+
+            <div style="width: 450px" class="form-group">
+                <label class="control-label">#{messages.msg_Nacionalidade}</label> 
+                <input type="text" jsf:maxlength="100"  jsf:label="#{messages.msg_Nacionalidade}" class="form-control" jsf:value="#{pessoaBean.pessoa.nacionalidade}" />
+            </div>
+
+            <div style="width: 450px" class="form-group">
+                <label class="control-label">#{messages.msg_Email}</label> 
+                <input type="text" jsf:maxlength="150" jsf:validator="valitor.EmailValidator" jsf:label="#{messages.msg_Email}" class="form-control" jsf:value="#{pessoaBean.pessoa.email}" />
+            </div>
+
+            <div style="width: 450px" class="form-group">
+                <label class="control-label">#{messages.msg_endereco}</label>
+                <h:selectOneMenu class="form-control" label="#{messages.msg_endereco}" id="tend" value="#{pessoaBean.idEndereco}" required="true" >
+                    <f:selectItem itemLabel=" - Selecione uma opcao - " itemValue=""/>
+                    <f:selectItems value="#{pessoaBean.enderecoItem}" />
+                </h:selectOneMenu>
+
+            </div>
+
+            <div class="form-group">
+                <button jsf:actionListener="#{pessoaBean.salvar}"  class="btn btn-primary" type="submit">
+                    <span class="fa fa-save"></span> #{messages.msg_Salvar}
+                </button>
+
+                <button jsf:action="#{pessoaBean.remover}" class="btn btn-danger" type="submit" style="margin-left: 10px" jsf:rendered="#{pessoaBean.pessoa.id ne null}">
+                    <span class="fa fa-save"></span> #{messages.msg_Remover}
+                </button>
+
+                <h:link styleClass="btn btn-default" outcome="/pessoa/pessoa-pesquisa.xhtml" style="margin-left: 10px">
+                    <span class="fa fa-arrow-left"></span>					
+                    #{messages.msg_Voltar}
+                </h:link>
+            </div>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/template/layout.xhtml">
+
+    <f:metadata>
+        <f:viewParam name="id" value="#{pessoaBean.pessoa.id}"  />
+        <f:viewAction action="#{pessoaBean.buscar}" if="#{param.id ne null}" />
+    </f:metadata>
+
+    <ui:define name="head">	
+        Inicio
+        <br></br>
+        <br></br>
+        <fieldset>
+            <legend>Cadastros</legend>
+            &#176; <h:link style="color: black; font-size: 20px;" outcome="pessoa/pessoa-form"> Cadastro Pessoa </h:link>
+            <br></br>
+            &#176; <h:link style="color: black; font-size: 20px;" outcome="endereco/endereco-form"> Cadastro Endereco </h:link>
+<!--            <br></br>
+            &#176; <h:link style="color: black; font-size: 20px;" outcome="usuario/usuario-form"> Cadastro #{messages.msg_Usuario} de Sistema </h:link>-->
+        </fieldset>
+        <br></br>
+        <br></br>
+        <fieldset>
+            <legend>Consultas</legend>
+            &#176; <h:link style="color: black; font-size: 20px;" outcome="pessoa/pessoa-pesquisa"> Pesquisar Pessoas </h:link>
+            <br></br>
+            &#176; <h:link style="color: black; font-size: 20px;" outcome="endereco/endereco-pesquisa"> Pesquisar #{messages.msg_Enderecos} </h:link>
+<!--            <br></br>
+            &#176; <h:link style="color: black; font-size: 20px;" outcome="usuario/usuario-pesquisa"> #{messages.msg_Usuarios} de Sistemas </h:link>-->
+        </fieldset>
+        <br></br>
+        <br></br>
+        <fieldset>
+            <legend>Rest</legend>
+            &#176; <a style="color: black; font-size: 20px;" href="http://localhost:5000/rest/projeto" target="_blank">#{messages.msg_URL_Servico}</a>
+        </fieldset>
+    </ui:define>
+
+    <ui:define name="body">
+        <h:form>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>
